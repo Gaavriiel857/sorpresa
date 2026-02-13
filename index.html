@@ -11,6 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+
         /* ================= BODY ================= */
 
         body {
@@ -113,30 +114,6 @@
             z-index: 5;
         }
 
-        /* ================= RESPONSIVE ================= */
-
-        @media (max-width: 600px) {
-
-            img.img-fluid {
-                width: 60% !important;
-            }
-
-            .galeria-abanico {
-                width: 100%;
-                height: auto;
-                display: flex;
-                gap: 10px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .galeria-abanico img {
-                position: relative;
-                width: 90px;
-                transform: none !important;
-            }
-        }
-
         /* ================= BOTONES ================= */
 
         .botones {
@@ -151,7 +128,7 @@
             background: red;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 22px;
             border-radius: 10px;
             font-size: 18px;
             cursor: pointer;
@@ -194,6 +171,63 @@
                 opacity: 0;
             }
         }
+
+        /* ================= RESPONSIVE CELULAR ================= */
+
+        @media (max-width: 768px) {
+
+            .caja-amor,
+            .caja-amor2,
+            .caja-amor3 {
+                width: 95%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            img.img-fluid {
+                width: 85% !important;
+                max-width: 300px;
+            }
+
+            /* Galeria pasa a modo fila */
+            .galeria-abanico {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .galeria-abanico img {
+                position: relative;
+                width: 90px;
+                transform: none !important;
+            }
+
+            /* Botones verticales */
+            .botones {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn-amor {
+                width: 100%;
+                font-size: 18px;
+            }
+        }
+
     </style>
 
     <script>
