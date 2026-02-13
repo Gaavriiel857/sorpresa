@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi wawitaaaa</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* ================= BODY ================= */
+
+        body {
+            background-color: #ffb6c1;
+            overflow-x: hidden;
+        }
+
+        /* ================= CAJAS ================= */
+
+        .caja-amor,
+        .caja-amor2,
+        .caja-amor3 {
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+            animation: aparecer 2s ease-out;
+        }
+
+        .caja-amor {
+            background: #ff4d6d;
+            color: white;
+            width: 85%;
+        }
+
+        .caja-amor2 {
+            background: #ffccd5;
+            color: black;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        .caja-amor3 {
+            background: #ff4d6d;
+            color: white;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        /* ================= ANIMACION ================= */
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(-80px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= LINEA ================= */
+
+        hr {
+            width: 60%;
+            margin: 30px auto;
+            border: 2px solid #e63950;
+            border-radius: 10px;
+        }
+
+        /* ================= GALERIA ================= */
+
+        .galeria-abanico {
+            position: relative;
+            width: 260px;
+            height: 220px;
+            margin: 30px auto;
+        }
+
+        .galeria-abanico img {
+            position: absolute;
+            width: 140px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+            transition: .3s;
+        }
+
+        .foto1 {
+            left: 0;
+            top: 30px;
+            transform: rotate(-12deg);
+        }
+
+        .foto2 {
+            left: 60px;
+            top: 0;
+            z-index: 2;
+        }
+
+        .foto3 {
+            left: 120px;
+            top: 30px;
+            transform: rotate(12deg);
+        }
+
+        .galeria-abanico img:hover {
+            transform: scale(1.1);
+            z-index: 5;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 600px) {
+
+            img.img-fluid {
+                width: 60% !important;
+            }
+
+            .galeria-abanico {
+                width: 100%;
+                height: auto;
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .galeria-abanico img {
+                position: relative;
+                width: 90px;
+                transform: none !important;
+            }
+        }
+
+        /* ================= BOTONES ================= */
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-amor {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn-si:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-no {
+            background: #ffd6de;
+            color: #444;
+            position: relative;
+        }
+
+        /* ================= MENSAJE ================= */
+
+        #mensaje {
+            display: none;
+            font-size: 24px;
+            color: white;
+            margin-top: 20px;
+        }
+
+        /* ================= CONFETI ================= */
+
+        .confeti {
+            position: fixed;
+            top: -20px;
+            font-size: 24px;
+            pointer-events: none;
+            animation: caer linear forwards;
+            z-index: 9999;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <script>
+
+        /* ================= BOTON NO ================= */
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const btnNo = document.getElementById("btnNo");
+
+            btnNo.addEventListener("mouseenter", mover);
+            btnNo.addEventListener("touchstart", mover);
+
+            function mover() {
+                const x = Math.random() * 200 - 100;
+                const y = Math.random() * 200 - 100;
+
+                btnNo.style.transform = `translate(${x}px, ${y}px)`;
+            }
+
+        });
+
+        /* ================= BOTONES ================= */
+
+        function decirSi() {
+
+            document.getElementById("mensaje").style.display = "block";
+            document.getElementById("mensajeNo").style.display = "none";
+
+            lanzarConfeti();
+        }
+
+        function decirNo() {
+            document.getElementById("mensajeNo").style.display = "block";
+        }
+
+        /* ================= CONFETI ================= */
+
+        function lanzarConfeti() {
+
+            for (let i = 0; i < 40; i++) {
+
+                const corazon = document.createElement("div");
+
+                corazon.classList.add("confeti");
+                corazon.innerText = "💖";
+
+                corazon.style.left = Math.random() * 100 + "vw";
+                corazon.style.animationDuration = 2 + Math.random() * 3 + "s";
+
+                document.body.appendChild(corazon);
+
+                setTimeout(() => {
+                    corazon.remove();
+                }, 5000);
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <!-- ================= TITULO ================= -->
+
+    <div class="caja-amor text-center">
+        <h1>HOLA NICOLE LINDA 💖</h1>
+    </div>
+
+    <img src="./img/7.jpg" class="img-fluid rounded mx-auto d-block"
+        style="width:20%;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,.2);">
+
+    <hr>
+
+    <!-- ================= SECCION 1 ================= -->
+
+    <div class="caja-amor2 text-center">
+
+        <h3>¿Cómo estás mi amor? 💞</h3>
+
+        <p>
+            Ya van 6 años juntitos, varios 14 de Febrero juntitos,
+            6 años de puras risas, abrazos, peleas (pequeñas),
+            llantos, apoyo y decisiones, pero lo más importante, Amor del real 🫶💖
+        </p>
+
+        <p>Solo me queda agradecerte por estar siempre.</p>
+
+        <p>Tu eres mi lugar seguro 🌸</p>
+
+        <img src="./img/mwah-cat-rose.gif" class="img-fluid rounded mx-auto d-block"
+            style="width:20%;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,.2);">
+
+    </div>
+
+    <hr>
+
+    <!-- ================= SECCION 2 ================= -->
+
+    <div class="caja-amor2 text-center">
+
+        <h3>¿Te acuerdas cuando empezamos? 🥺</h3>
+
+        <p>
+            Éramos más chicos, más inmaduros,
+            pero con nuestro amor tan intenso, que al pasar los años sigue creciendo,
+            y eso no cualquiera lo tiene💕
+        </p>
+
+        <p>
+            Hemos crecido juntos,
+            aprendido juntos,
+            y soñado juntos ✨
+        </p>
+
+        <p>
+            Hasta juntitos nos fuimos a vivir, a pesar de no saber nada de la vida en pareja,
+            pero con el amor y la confianza de que si podiamos dar ese gran paso, y nos ha ido excelente juntos... 🌸
+        </p>
+
+        <div class="galeria-abanico">
+
+            <img src="./img/3.jpg" class="foto1">
+            <img src="./img/2.jpg" class="foto2">
+            <img src="./img/q.jpg" class="foto3">
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <!-- ================= SECCION 3 ================= -->
+
+    <div class="caja-amor2 text-center">
+
+        <h3>Lo que siento por ti hoy 💌</h3>
+
+        <p>
+            Es lo mismo que sentí el primer día, pero despues de 6 años, con más fuerza, con más ganas de seguir creciendo juntos,
+            y con la certeza de que quiero estar contigo para toda la vida... 💖
+        </p>
+
+        <p>Y no te cambiaría por nada en este planeta ✨</p>
+
+        <img src="./img/cat-kiss.gif" class="img-fluid rounded mx-auto d-block"
+            style="width:20%;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,.2);">
+
+    </div>
+
+    <!-- ================= PREGUNTA ================= -->
+
+    <h3 class="text-center mt-4">
+        Entonces Nicole Jara Guinao, quiero preguntarte algo... 💌
+    </h3>
+
+    <div class="caja-amor3 text-center">
+
+        <h1>¿Quieres ser mi 14 de Febrero? 💖</h1>
+
+        <div class="botones">
+
+            <button class="btn-amor btn-si" onclick="decirSi()">
+                SI AMOR SI KIEROOOO AAA 💖
+            </button>
+
+            <button class="btn-amor btn-no" id="btnNo" onclick="decirNo()">
+                Nao Nao (hdp)
+            </button>
+
+        </div>
+
+        <!-- MENSAJE SI -->
+
+        <div id="mensaje" class="text-center mt-3">
+
+            <h3>💖 Sabía que ibas a decir q si uwuwuwu 💖 </h3>
+
+            <p>
+                Te amo mi nicolsita jara uwu, gracias por estos 6 años de amor, tenemos una cita 💖
+            </p>
+
+            <img src="./img/cat-tongue-cat.gif" class="img-fluid rounded mx-auto d-block"
+                style="width:20%;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,.2);">
+
+        </div>
+
+        <!-- MENSAJE NO -->
+
+        <div id="mensajeNo" class="text-center mt-3" style="display:none;">
+
+            <h3>Yapo no wei 😤</h3>
+
+            <p>Anda a poner q si altok malditaaaaaAaaaAaAaAaaa</p>
+
+            <img src="./img/angry.gif" class="img-fluid rounded mx-auto d-block"
+                style="width:20%;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,.2);">
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
